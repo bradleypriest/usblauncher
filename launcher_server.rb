@@ -45,4 +45,13 @@ class LauncherServer < Sinatra::Base
     $LAUNCHER.fire(projectiles)
   end
 
+  get "/reset" do
+    $LAUNCHER.zero
+  end
+
+  get "/attack/:user" do
+    $LAUNCHER.zero
+    $LAUNCHER.attack(params[:user])
+    true
+  end
 end

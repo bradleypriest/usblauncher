@@ -1,4 +1,5 @@
 require "usb"
+$USERS = YAML.load_file('users.yml')
 
 class Launcher
 
@@ -50,6 +51,14 @@ class Launcher
 
   def pause(duration)
     sleep(duration / 1000.0)
+  end
+
+  def attack(user)
+    zero
+    $USERS[user].each do |direction, distance|
+      send_move(self.class.const_get(direction.upcase), distance)
+    end
+    fire(2)
   end
 
   private
