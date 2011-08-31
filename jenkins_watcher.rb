@@ -8,7 +8,7 @@ $LAUNCHER = Launcher.new
 class JenkinsWatcher
 
   def self.init
-    new.poll
+    new
   end
 
   def initialize
@@ -28,7 +28,7 @@ class JenkinsWatcher
       end
     end
     puts "."
-    sleep(10)
+    sleep(60)
     poll
   end
 
